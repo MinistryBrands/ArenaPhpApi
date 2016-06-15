@@ -50,6 +50,8 @@ if ($_POST)
 		   'personId' => $personId,
 		]);
 		
+		$_SESSION['groupMemberships'][$_POST['groupId']] = TRUE;
+		
 		$message = 'You have been added to the group!';
 	}
 }
@@ -88,7 +90,8 @@ if ($_POST)
 					    	<tr>
 								<td><?php print $group->Name; ?></td>
 								<td><?php print $group->Description; ?></td>
-								<td><a href="javascript:void(0);" data-groupid="<?php print $group->GroupID; ?>" class="btn btn-default join-button">Join</a></td>
+								<td>
+									<a href="javascript:void(0);" data-groupid="<?php print $group->GroupID; ?>" class="<?php print $_SESSION['groupMemberships'][$group->GroupID] ? 'disabled' : ''; ?> btn btn-success join-button">Join</a></td>
 					    	</tr>
 						<?php endforeach; ?>
 				    </tbody>
@@ -140,6 +143,11 @@ if ($_POST)
 			
 			$(".join-button").click(function()
 			{
+				if ($(this).hadClass('disabled'))
+				{
+					return false;
+				}
+				
 				$("#joinModal").modal('show');
 				
 				$("#groupId").val($(this).data('groupid'));

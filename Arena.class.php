@@ -118,6 +118,7 @@ class Arena {
 		   'params' => [
 		      'RoleID' => 24,
 		      'UniformNumber' => -1,
+		      'MemberNotes' => '',
 		   ],
 		   'json' => TRUE,
 		   'signRequest' => TRUE,
@@ -125,6 +126,7 @@ class Arena {
 		
 		return $ret;
 	}
+	
 	/*
 	public function addPersonToProfile($opts = [])
 	{
