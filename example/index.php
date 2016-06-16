@@ -143,7 +143,7 @@ if ($_POST)
 			
 			$(".join-button").click(function()
 			{
-				if ($(this).hadClass('disabled'))
+				if ($(this).hasClass('disabled'))
 				{
 					return false;
 				}
